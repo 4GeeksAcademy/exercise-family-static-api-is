@@ -1,5 +1,4 @@
 {
-    "workbench.editorAssociations": {   
-        "*.md": "vscode.markdown.preview.editor",
-    }
+  "python.defaultInterpreterPath": "/home/vscode/.local/share/virtualenvs/exercise-family-static-api-is-8WdQ6K6-/bin/python",
+  "python.analysis.extraPaths": ["./src"]
 }
