@@ -8,6 +8,11 @@ CORS(app)
 jackson_family = FamilyStructure("Jackson")
 
 
+@app.route('/')
+def home():
+    return jsonify({"message": "API de la Familia Jackson"}), 200
+
+
 @app.route('/members', methods=['GET'])
 def get_all_members():
     try:
@@ -46,6 +51,11 @@ def add_member():
         if not isinstance(data["lucky_numbers"], list):
             return jsonify({"error": "lucky_numbers debe ser una lista"}), 400
 
+        data["last_name"] = "Jackson"
+
+        if "id" not in data or data["id"] is None:
+            data["id"] = jackson_family._generate_id()
+
         jackson_family.add_member(data)
         return jsonify(data), 200
 
@@ -66,4 +76,4 @@ def delete_member(member_id):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=3000, debug=True)
